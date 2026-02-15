@@ -3,7 +3,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.egg-info/
-dist/
 build/
 *.egg
 
@@ -20,7 +19,6 @@ webapp/backend/uploads/*
 
 # Node
 node_modules/
-webapp/frontend/dist/
 
 # Logs
 *.log

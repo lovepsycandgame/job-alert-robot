@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: job-alert-robot
+    runtime: python
+    rootDir: webapp/backend
+    buildCommand: |
+      pip install -r requirements.txt &&
+      python -m spacy download en_core_web_sm &&
+      cd ../frontend &&
+      npm install &&
+      npm run build
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: ADZUNA_APP_ID
+        sync: false
+      - key: ADZUNA_APP_KEY
+        sync: false
+      - key: SERPAPI_KEY
+        sync: false
+      - key: JUNGLE_ALGOLIA_APP_ID
+        sync: false
+      - key: JUNGLE_ALGOLIA_API_KEY
+        sync: false
+      - key: JUNGLE_ALGOLIA_INDEX
+        value: wttj_jobs_production_en
